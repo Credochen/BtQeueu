@@ -4,4 +4,5 @@ composer.lock
 lock
 Would skip repository vendor/pda/pheanstalk
 vendor/
+tmp/
 worker.txt
