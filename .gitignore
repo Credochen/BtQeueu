@@ -1,0 +1,7 @@
+.idea/
+binlog.3
+composer.lock
+lock
+Would skip repository vendor/pda/pheanstalk
+vendor/
+worker.txt

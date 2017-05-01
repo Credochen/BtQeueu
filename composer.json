@@ -1,0 +1,21 @@
+{
+    "name": "guangpeng/BtQueue",
+    "description": "基于beanstalk，模拟php resque开发的消息队列",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Guangpeng Chen",
+            "email": "coder@12301.cc"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.3.0",
+        "pda/pheanstalk": "^3.1"
+    },
+   "autoload" : {
+      "psr-4": {
+        "BtQueue\\": "src/"
+      }
+    }
+}
