@@ -12,13 +12,19 @@ class Beanstalk_Worker {
 
     private $path;
     private $queues = [];
-    public function __construct($queues) {
-        //$this->setBasePath($path);
+    public function __construct($queues, Array $config=[]) {
         if (!is_array($queues)) {
             $this->queues[] = $queues;
         }
+        $defaults = [
+            'persistent' => true,
+            'host' => '127.0.0.1',
+            'port' => 11300,
+            'timeout' => 1,
+        ];
+        $config = $config + $defaults;
         $this->log('starting');
-        $this->pheanstalk = new Pheanstalk('127.0.0.1', '11301', '2');
+        $this->pheanstalk = new Pheanstalk($config['host'], $config['port'], $config['timeout'], $config['persistent']);
     }
 
     public function __destruct() {
@@ -61,7 +67,6 @@ class Beanstalk_Worker {
             $jobInstance = Beanstalk_Job::reserve($jobData['queue'], $job_encoded);
             $this->log("Found job on {$job_encoded->queue}");
             $result = $this->perform($jobInstance);
-            var_dump($result);
             if ($result) {
                 $this->log('job:'.print_r($job_encoded, 1));
                 $this->pheanstalk->delete($job);
