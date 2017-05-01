@@ -1,5 +1,5 @@
 {
-    "name": "guangpeng/BtQueue",
+    "name": "guangpeng/bt-queue",
     "description": "基于beanstalk，模拟php resque开发的消息队列",
     "license": "MIT",
     "authors": [
